@@ -1,0 +1,33 @@
+{
+  "name": "formulario",
+  "version": "1.0.0",
+  "description": "formulário",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yagoLHP/formulario.git"
+  },
+  "keywords": [
+    "formulário",
+    "javascript",
+    "node",
+    "js",
+    "express",
+    "http",
+    "post"
+  ],
+  "author": "Yago Malcom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yagoLHP/formulario/issues"
+  },
+  "homepage": "https://github.com/yagoLHP/formulario#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
