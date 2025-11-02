@@ -1,10 +1,11 @@
 import express from "express";
 
 const host = "0.0.0.0";
-const porta = 3000;
-
+const porta = 1212;
+var listaUsuarios = [];
 const server = express();
 
+server.use(express.urlencoded({ extended: true })); 
 
 server.get("/", (req, res) => {
     res.send(`
@@ -32,7 +33,7 @@ server.get("/", (req, res) => {
                 Cadastros
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/cadastroUsuario">Usuários</a></li>
+                <li><a class="dropdown-item" href="/cadastroUsuario">Jogadores</a></li>
             </ul>
             </li>
             <li class="nav-item">
@@ -60,73 +61,62 @@ server.get("/cadastroUsuario", (req, res) => {
             </head>
             <body>
                 <div class="container">
-                    <h1 class="text-center border m-3 p-3 bg-light">Cadastro de Usuário</h1>
+                    <h1 class="text-center border m-3 p-3 bg-light">Cadastro de Jogador</h1>
                     <form method="POST" action="/adicionarUsuario" class="row g-3 needs-validation m-3 p-3 bg-light" novalidate>
-                    <div class="col-md-4">
-                      <label for="nome" class="form-label">Nome</label>
-                      <input type="text" class="form-control" id="nome" name="nome" value="Mark">
-                      <div class="valid-feedback">
-                        Looks good!
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <label for="sobrenome" class="form-label">Sobrenome</label>
-                      <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="Otto">
-                      <div class="valid-feedback">
-                        Looks good!
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <label for="username" class="form-label">Username</label>
-                      <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" class="form-control" id="username" name="username" aria-describedby="inputGroupPrepend">
-                        <div class="invalid-feedback">
-                          Please choose a username.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="cidade" class="form-label">Cidade</label>
-                      <input type="text" class="form-control" id="cidade" name="cidade">
-                      <div class="invalid-feedback">
-                        Please provide a valid city.
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <label for="uf" class="form-label">Estado</label>
-                      <select class="form-select" id="uf" name="uf">
-                        <option selected disabled value="">Escolha um estado</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        </select>
-                    <div class="col-md-3">
-                      <label for="cep" class="form-label">CEP</label>
-                      <input type="text" class="form-control" id="cep" name="cep">
-                      <div class="invalid-feedback">
-                        Please provide a valid zip.
-                      </div>
-                    </div>
-                  
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Cadastrar</button>
-                      <a type="reset" class="btn btn-secondary">Voltar</a>
-                    </div>
-                  </form>
+              <div class="col-md-4">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="Mark">
+              </div>
+
+              <div class="col-md-4">
+                <label for="sobrenome" class="form-label">Sobrenome</label>
+                <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="Otto">
+              </div>
+
+              <div class="col-md-4">
+                <label for="nomeJ" class="form-label">Apelido (nome que vai na camisa)</label>
+                <div class="input-group has-validation">
+                  <span class="input-group-text" id="inputGroupPrepend">@</span>
+                  <input type="text" class="form-control" id="nomeJ" name="nomeJ" aria-describedby="inputGroupPrepend">
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="time" class="form-label">Time</label>
+                <input type="text" class="form-control" id="time" name="time">
+              </div>
+
+              <div class="col-md-3">
+                <label for="nt" class="form-label">Naturalidade</label>
+                <select class="form-select" id="nt" name="nt">
+                  <option selected disabled value="">Escolha uma naturalidade</option>
+                  <option value="AF">Africano</option>
+                  <option value="AS">Asiático</option>
+                  <option value="NAM">Norte Americano</option>
+                  <option value="SA">Sul Americano</option>
+                  <option value="OC">Oceania</option>
+                  <option value="AN">Antártico</option>
+                  <option value="AM">Americano</option>
+                  <option value="CA">Canadense</option>
+                  <option value="LA">Latino</option>
+                  <option value="ME">Médio Oriente</option>
+                  <option value="EU">Europeu</option>
+                  <option value="NA">Nativo</option>
+                  <option value="OU">Outro</option>
+                </select>
+              </div>
+
+              <div class="col-md-3">
+                <label for="numb" class="form-label">Número na camisa</label>
+                <input type="text" class="form-control" id="numb" name="numb">
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                <a href="/" class="btn btn-secondary">Voltar</a>
+              </div>
+            </form>
+
                 </div>
                 
             
@@ -138,8 +128,62 @@ server.get("/cadastroUsuario", (req, res) => {
 
 
 server.post('/adicionarUsuario', (req, res) => {
+const nome = req.body.nome;
+const sobrenome = req.body.sobrenome;
+const nomeJ = req.body.nomeJ;
+const time = req.body.time;
+const nt = req.body.nt;
+const numb = req.body.numb;
 
+listaUsuarios.push({nome, sobrenome, nomeJ, time, nt, numb}); 
+res.redirect('/listaUsuarios');
 });
+
+server.get('/listaUsuarios', (req, res) => {
+    let conteudo = `
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="UTF-8"/>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+            <title>Jogadores Cadastrados</title>
+        </head>
+        <body>
+            <div class="container">
+                <h1 class="text-center border m-3 p-3 bg-light">Lista de Jogadores</h1>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Sobrenome</th>
+                            <th>Nome de Jogador</th>
+                            <th>Time</th>
+                            <th>Naturalidade</th>
+                            <th>Número na Camisa</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+                   for(let i = 0; i < listaUsuarios.length; i++) { 
+                    conteudo += `
+                        <tr>
+                            <td>${listaUsuarios[i].nome}</td>
+                            <td>${listaUsuarios[i].sobrenome}</td>
+                            <td>${listaUsuarios[i].nomeJ}</td>
+                            <td>${listaUsuarios[i].time}</td>
+                            <td>${listaUsuarios[i].nt}</td>
+                            <td>${listaUsuarios[i].numb}</td>
+                        </tr>`;
+                   }
+    conteudo += `</tbody>
+                </table>
+            </div>
+            <a class="btn btn-secondary" href="/cadastroUsuario">Voltar</a>
+            </body>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+            </html>
+    `;
+            res.send(conteudo);
+                  });
 
 server.listen(porta, host, () => {
     console.log(`Servidor rodando em http://${host}:${porta}`);
