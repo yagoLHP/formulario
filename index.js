@@ -133,7 +133,6 @@ const nomeJ = req.body.nomeJ;
 const time = req.body.time;
 const nt = req.body.nt;
 const numb = req.body.numb;
-var contJ = 0;
 
 listaUsuarios.push({nome, sobrenome, nomeJ, time, nt, numb}); 
 res.redirect('/listaUsuarios');
@@ -163,6 +162,7 @@ server.get('/listaUsuarios', (req, res) => {
                         </tr>
                     </thead>
                     <tbody>`;
+                   let contJogador = 0;
                    for(let i = 0; i < listaUsuarios.length; i++) { 
                             contJogador++;
                     conteudo += `
