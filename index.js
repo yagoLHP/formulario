@@ -176,7 +176,7 @@ server.get('/listaUsuarios', (req, res) => {
                         </tr>`;
                    }
                         conteudo += `<tr>
-                                        <td col="6">Número total de jogadores: ${contJogador}</td>
+                                        <td colspan="6"><strong>Número total de jogadores: ${contJogador}</strong></td>
                                     </tr>`
     conteudo += `</tbody>
                 </table>
