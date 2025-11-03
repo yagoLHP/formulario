@@ -133,6 +133,7 @@ const nomeJ = req.body.nomeJ;
 const time = req.body.time;
 const nt = req.body.nt;
 const numb = req.body.numb;
+var contJ = 0;
 
 listaUsuarios.push({nome, sobrenome, nomeJ, time, nt, numb}); 
 res.redirect('/listaUsuarios');
@@ -163,6 +164,7 @@ server.get('/listaUsuarios', (req, res) => {
                     </thead>
                     <tbody>`;
                    for(let i = 0; i < listaUsuarios.length; i++) { 
+                            contJogador++;
                     conteudo += `
                         <tr>
                             <td>${listaUsuarios[i].nome}</td>
@@ -171,6 +173,7 @@ server.get('/listaUsuarios', (req, res) => {
                             <td>${listaUsuarios[i].time}</td>
                             <td>${listaUsuarios[i].nt}</td>
                             <td>${listaUsuarios[i].numb}</td>
+                            <td>Número total de jogadores: ${contJogador}</td>
                         </tr>`;
                    }
     conteudo += `</tbody>
