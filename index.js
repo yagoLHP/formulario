@@ -19,7 +19,7 @@ server.get("/", (req, res) => {
             <body>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">MENU</a>
+        <a class="navbar-brand" href="#">CBF</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button> 
@@ -57,7 +57,7 @@ server.get("/cadastroUsuario", (req, res) => {
             <head>
                 <meta charset="UTF-8"/>
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
-                <title>Cadastro de Usuário</title>
+                <title>Cadastro de Jogador</title>
             </head>
             <body>
                 <div class="container">
@@ -65,16 +65,16 @@ server.get("/cadastroUsuario", (req, res) => {
                     <form method="POST" action="/adicionarUsuario" class="row g-3 needs-validation m-3 p-3 bg-light" novalidate>
               <div class="col-md-4">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" value="Mark">
+                <input type="text" placeholder="ex: Yuri" class="form-control" id="nome" name="nome">
               </div>
 
               <div class="col-md-4">
                 <label for="sobrenome" class="form-label">Sobrenome</label>
-                <input type="text" class="form-control" id="sobrenome" name="sobrenome" value="Otto">
+                <input type="text" class="form-control" placeholder="ex: Alberto" id="sobrenome" name="sobrenome">
               </div>
 
               <div class="col-md-4">
-                <label for="nomeJ" class="form-label">Apelido (nome que vai na camisa)</label>
+                <label for="nomeJ" class="form-label" placeholder="ex: Gabigol, Ronaldinho" >Apelido</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend">@</span>
                   <input type="text" class="form-control" id="nomeJ" name="nomeJ" aria-describedby="inputGroupPrepend">
@@ -83,9 +83,8 @@ server.get("/cadastroUsuario", (req, res) => {
 
               <div class="col-md-6">
                 <label for="time" class="form-label">Time</label>
-                <input type="text" class="form-control" id="time" name="time">
+                <input type="text" placeholder="ex: Corinthians" class="form-control" id="time" name="time">
               </div>
-
               <div class="col-md-3">
                 <label for="nt" class="form-label">Naturalidade</label>
                 <select class="form-select" id="nt" name="nt">
@@ -93,7 +92,7 @@ server.get("/cadastroUsuario", (req, res) => {
                   <option value="AF">Africano</option>
                   <option value="AS">Asiático</option>
                   <option value="NAM">Norte Americano</option>
-                  <option value="SA">Sul Americano</option>
+                  <option value="SA" selected>Sul Americano</option>
                   <option value="OC">Oceania</option>
                   <option value="AN">Antártico</option>
                   <option value="AM">Americano</option>
@@ -108,7 +107,7 @@ server.get("/cadastroUsuario", (req, res) => {
 
               <div class="col-md-3">
                 <label for="numb" class="form-label">Número na camisa</label>
-                <input type="text" class="form-control" id="numb" name="numb">
+                <input type="text" placeholder="ex: 7" class="form-control" id="numb" name="numb">
               </div>
 
               <div class="col-12">
