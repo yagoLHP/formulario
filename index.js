@@ -74,10 +74,10 @@ server.get("/cadastroUsuario", (req, res) => {
               </div>
 
               <div class="col-md-4">
-                <label for="nomeJ" class="form-label" placeholder="ex: Gabigol, Ronaldinho" >Apelido</label>
+                <label for="nomeJ" class="form-label">Apelido</label>
                 <div class="input-group has-validation">
                   <span class="input-group-text" id="inputGroupPrepend">@</span>
-                  <input type="text" class="form-control" id="nomeJ" name="nomeJ" aria-describedby="inputGroupPrepend">
+                  <input type="text" placeholder="ex: Gabigol, Ronaldinho" class="form-control" id="nomeJ" name="nomeJ" aria-describedby="inputGroupPrepend">
                 </div>
               </div>
 
