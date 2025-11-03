@@ -173,9 +173,11 @@ server.get('/listaUsuarios', (req, res) => {
                             <td>${listaUsuarios[i].time}</td>
                             <td>${listaUsuarios[i].nt}</td>
                             <td>${listaUsuarios[i].numb}</td>
-                            <td>Número total de jogadores: ${contJogador}</td>
                         </tr>`;
                    }
+                        conteudo += `<tr>
+                                        <td>Número total de jogadores: ${contJogador}</td>
+                                    </tr>`
     conteudo += `</tbody>
                 </table>
             </div>
